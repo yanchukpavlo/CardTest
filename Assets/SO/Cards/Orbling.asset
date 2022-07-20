@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ffafbfac4a81346baabd7cb0c4b722, type: 3}
+  m_Name: Orbling
+  m_EditorClassIdentifier: 
+  <card>k__BackingField:
+    <cardType>k__BackingField: 1
+    cardNameUpd: Elder {0}
+    <icon>k__BackingField: {fileID: 0}
+    <iconUpd>k__BackingField: {fileID: 0}
+    <costUpdate>k__BackingField: 4
+    <selling>k__BackingField: 7
+    <sellingUpd>k__BackingField: 11
