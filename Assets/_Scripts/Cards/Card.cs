@@ -24,7 +24,7 @@ public class Card
     [field: SerializeField] public Sprite icon { get; private set; }
     [field: SerializeField] public Sprite iconUpd { get; private set; }
 
-    [field: SerializeField] public byte costUpdate { get; private set; }
+    [field: SerializeField] public byte updatedCost { get; private set; }
     [field: SerializeField] public byte selling { get; private set; }
     [field: SerializeField] public byte sellingUpd { get; private set; }
 
@@ -39,15 +39,10 @@ public class Card
         clon.cardNameUpd = cardNameUpd;
         clon.icon = icon;
         clon.iconUpd = iconUpd;
-        clon.costUpdate = costUpdate;
+        clon.updatedCost = updatedCost;
         clon.selling = selling;
         clon.sellingUpd = sellingUpd;
 
         return clon;
-    }
-
-    public bool IsUpgraded()
-    {
-        return status == CardStatus.Upgraded;
     }
 }

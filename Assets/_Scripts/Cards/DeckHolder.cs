@@ -8,19 +8,19 @@ public class DeckHolder : MonoBehaviour
     [field: SerializeField] public CardHolder prefabCardHolder { get; private set; }
     [SerializeField] StartCard[] startCards;
 
+    public ushort currency { get; private set; }
     public Deck deck { get; private set; }
 
-    public void Setup() => StartDeck();
-
-    void StartDeck()
+    public void Setup(ushort currency)
     {
+        this.currency = currency;
         Deck deck = new Deck();
         CardHolder cardHolder = null;
 
         for (int i = 0; i < startCards.Length; i++)
         {
             cardHolder = Instantiate(prefabCardHolder, cardTableTr);
-            cardHolder.Setup(startCards[i].GetCardInfo());
+            cardHolder.Setup(startCards[i].GetCardInfo(), deck);
             deck.CardAdd(cardHolder);
         }
     }

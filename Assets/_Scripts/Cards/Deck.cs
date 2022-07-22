@@ -6,6 +6,8 @@ using Random = UnityEngine.Random;
 [System.Serializable]
 public class Deck
 {
+    public Action<byte> OnCardUpgraded;
+    public Action<byte> OnCardDestroyed;
     List<CardHolder> deck;
 
     public Deck()
@@ -48,18 +50,24 @@ public class Deck
         }
     }
 
-    public void CardAdd(IEnumerable<CardHolder> card)
+    public void CardAdd(IEnumerable<CardHolder> cardHolders)
     {
-        deck.AddRange(card);
+        deck.AddRange(cardHolders);
     }
 
-    public void CardAdd(CardHolder card)
+    public void CardAdd(CardHolder cardHolder)
     {
-        deck.Add(card);
+        deck.Add(cardHolder);
     }
 
-    public void CardRemove(CardHolder card)
+    public void CardRemove(CardHolder cardHolder)
     {
-        deck.Remove(card);
+        deck.Remove(cardHolder);
+        OnCardDestroyed?.Invoke(cardHolder.SellingCost);
+    }
+
+    public void CardUpgrade(CardHolder cardHolder)
+    {
+        OnCardUpgraded?.Invoke(cardHolder.card.updatedCost);
     }
 }

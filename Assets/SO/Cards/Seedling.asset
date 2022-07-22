@@ -17,6 +17,6 @@ MonoBehaviour:
     cardNameUpd: Elder {0}
     <icon>k__BackingField: {fileID: 0}
     <iconUpd>k__BackingField: {fileID: 0}
-    <costUpdate>k__BackingField: 2
+    <updatedCost>k__BackingField: 2
     <selling>k__BackingField: 5
     <sellingUpd>k__BackingField: 7

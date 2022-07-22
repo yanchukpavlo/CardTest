@@ -1,43 +1,69 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class CardHolder : MonoBehaviour
+public abstract class CardHolder : Button4Action
 {
-    [SerializeField] Image imageIcon;
-    [SerializeField] Image imageUpgraded;
-    [SerializeField] TextMeshProUGUI textName;
-    //[SerializeField] TextMeshProUGUI textDescription;
-    [SerializeField] TextMeshProUGUI textHelpInfo;
+    [Space(20)]
+    [SerializeField] protected Image imageIcon;
+    [SerializeField] protected GameObject upgradedIndicator;
+    [SerializeField] protected TextMeshProUGUI textName;
+    //[SerializeField] protected TextMeshProUGUI textDescription;
+    [SerializeField] protected TextMeshProUGUI textHelpInfo;
 
-    Card card;
+    public Card card { get; private set; }
+    Deck currentDeck;
 
-    public void Setup(Card card)
+    public bool IsUpgraded
     {
+        get
+        {
+            return card.status == CardStatus.Upgraded;
+        }
+    }
+
+    public byte SellingCost
+    {
+        get
+        {
+            return card.status switch
+            {
+                CardStatus.Default => card.selling,
+                CardStatus.Upgraded => card.sellingUpd,
+                _ => 0
+            };
+        }
+    }
+
+    #region Abstract
+
+    abstract public void ChangeVisual(CardStatus status);
+    abstract public void MouseInteract(PlayerActionState status);
+
+    #endregion
+
+    #region Virtual
+
+    virtual public void Setup(Card card, Deck deck)
+    {
+        currentDeck = deck;
         this.card = card;
         ChangeVisual(card.status);
     }
 
-    void ChangeVisual(CardStatus status)
+    virtual public void Upgrade()
     {
-        switch (status)
-        {
-            case CardStatus.Default:
-                imageIcon.sprite = card.icon;
-                textName.text = card.cardType.ToString();
-                break;
-
-            case CardStatus.Upgraded:
-                imageIcon.sprite = card.iconUpd;
-                textName.text = card.CardNameUpd;
-                imageUpgraded.gameObject.SetActive(true);
-                break;
-
-            default:
-                Debug.LogWarningFormat("WTF state in {0}, with - {1}.", this.GetType(), status);
-                break;
-        }
+        currentDeck.CardUpgrade(this);
+        card.status = CardStatus.Upgraded;
+        ChangeVisual(card.status);
     }
+
+    virtual public void Destroy()
+    {
+        currentDeck.CardRemove(this);
+        Destroy(gameObject);
+    }
+
+    #endregion
+
 }
