@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3125204019312816610
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3125204019312816612}
+  - component: {fileID: 3125204019312816611}
+  - component: {fileID: 3125204019312816613}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3125204019312816612
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3125204019312816610}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3125204019312816611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3125204019312816610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4d909c3ec692c342b7cd9932dd58aee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointerLine: {fileID: 813310446732548544, guid: 236b371023286c943b713439e9a76bd2, type: 3}
+--- !u!114 &3125204019312816613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3125204019312816610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94dd436fb42850a4a8be644ab232d5d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <cardTableTr>k__BackingField: {fileID: 0}
+  <prefabCardHolder>k__BackingField: {fileID: 1374487130710502417, guid: 21e51b0353abd834db54a63229ebcb60, type: 3}
+  startCards:
+  - cardData: {fileID: 11400000, guid: 3904a38e8e757934aab06e9e2f07d539, type: 2}
+    status: 0
+  - cardData: {fileID: 11400000, guid: 3904a38e8e757934aab06e9e2f07d539, type: 2}
+    status: 0
+  - cardData: {fileID: 11400000, guid: 3d12e7e1d9a2a9840923a19531fc63ba, type: 2}
+    status: 0
+  - cardData: {fileID: 11400000, guid: 84011f09efd1bac47925fba68b0b9603, type: 2}
+    status: 1
+  - cardData: {fileID: 11400000, guid: 3d12e7e1d9a2a9840923a19531fc63ba, type: 2}
+    status: 0
+  - cardData: {fileID: 11400000, guid: 388161f3ea2c7234b96d6139882e6d6c, type: 2}
+    status: 0

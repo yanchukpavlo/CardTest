@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1374487130248139417}
   - component: {fileID: 1374487130248139416}
   m_Layer: 5
-  m_Name: Background
+  m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 682472424941346167}
   - component: {fileID: 7104288408504127924}
   - component: {fileID: 1107339129608987823}
+  - component: {fileID: 4014474399155725288}
   m_Layer: 5
   m_Name: Player Card
   m_TagString: Untagged
@@ -224,7 +225,7 @@ Animator:
   m_GameObject: {fileID: 1374487130710502423}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 369d781162adf1e4b960cefc42faff3c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 74516e8f64073904c8bc0e6e10a0078c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -233,6 +234,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!225 &4014474399155725288
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374487130710502423}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &235839589937041446
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -371,7 +384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3925984894043820917, guid: cf151db696d921043898e45e9c8bdc35, type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3925984894043820917, guid: cf151db696d921043898e45e9c8bdc35, type: 3}
       propertyPath: m_RootOrder
@@ -383,7 +396,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3925984894043820917, guid: cf151db696d921043898e45e9c8bdc35, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3925984894043820917, guid: cf151db696d921043898e45e9c8bdc35, type: 3}
       propertyPath: m_AnchorMin.x
@@ -391,7 +404,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3925984894043820917, guid: cf151db696d921043898e45e9c8bdc35, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3925984894043820917, guid: cf151db696d921043898e45e9c8bdc35, type: 3}
       propertyPath: m_SizeDelta.x
@@ -435,7 +448,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3925984894043820917, guid: cf151db696d921043898e45e9c8bdc35, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 55
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3925984894043820917, guid: cf151db696d921043898e45e9c8bdc35, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -463,15 +476,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8750954313443546485, guid: cf151db696d921043898e45e9c8bdc35, type: 3}
       propertyPath: m_fontSize
-      value: 26
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750954313443546485, guid: cf151db696d921043898e45e9c8bdc35, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750954313443546485, guid: cf151db696d921043898e45e9c8bdc35, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750954313443546485, guid: cf151db696d921043898e45e9c8bdc35, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8750954313443546485, guid: cf151db696d921043898e45e9c8bdc35, type: 3}
       propertyPath: m_fontSizeMax
-      value: 26
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 8750954313443546485, guid: cf151db696d921043898e45e9c8bdc35, type: 3}
       propertyPath: m_enableAutoSizing
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750954313443546485, guid: cf151db696d921043898e45e9c8bdc35, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf151db696d921043898e45e9c8bdc35, type: 3}

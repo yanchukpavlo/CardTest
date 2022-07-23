@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using System;
 
-public enum PlayerActionState : byte
+public enum ActionState : byte
 {
     None,
     Update,
@@ -13,36 +12,73 @@ public enum PlayerActionState : byte
 [RequireComponent(typeof(DeckHolder))]
 public class Player : MonoBehaviour
 {
-    public static Action<PlayerActionState> OnChangeState;
-    public static PlayerActionState PlayerActionState { get; private set; } = PlayerActionState.None;
-    public DeckHolder deckHolder { get; private set; }
+    public static Action<ActionState> OnChangeState;
+    public static Action<int> OnChangeCurrency;
+    public static ActionState ActionState { get; private set; } = ActionState.None;
+    public static int Currency { get; private set; }
 
+    [SerializeField] PointerLine pointerLine;
+
+    PointerLine line = null;
     bool block;
 
-    public static void ChangeState(PlayerActionState newState)
+    public DeckHolder deckHolder { get; private set; }
+
+    public static ActionState SetActionState { set { ActionState = value; } }
+
+    public static void ChangeCurrency(int amount)
     {
-        PlayerActionState = newState;
-        OnChangeState?.Invoke(PlayerActionState);
-        Debug.Log("New player state - " + newState);
+        Currency += amount;
+        OnChangeCurrency?.Invoke(Currency);
     }
 
+    void ChangeState(ActionState newState)
+    {
+        ActionState = newState;
+        OnChangeState?.Invoke(ActionState);
+        Debug.Log("New player state - " + newState);
+
+        if (line)
+        {
+            Destroy(line.gameObject);
+            line = null;
+        }
+        
+        switch (newState)
+        {
+            case ActionState.None:
+
+                break;
+
+            case ActionState.Update:
+                line = Instantiate(pointerLine);
+                break;
+
+            case ActionState.Destroy:
+                line = Instantiate(pointerLine);
+                break;
+
+            default:
+                Debug.LogWarningFormat("WTF state in {0}, with - {1}.", this.GetType(), newState);
+                break;
+        }
+    }
+
+    //button event
     public void StateUpdate(bool isBlock)
     {
-        if (isBlock)
-        {
-            block = true;
-            Debug.Log("Set Block");
-        }
-        ChangeState(PlayerActionState.Update);
+        block = isBlock;
+        ChangeState(ActionState.Update);
     }
 
+    //button event
     public void StateDestroy(bool isBlock)
     {
         block = isBlock;
-        ChangeState(PlayerActionState.Destroy);
+        ChangeState(ActionState.Destroy);
     }
 
-    private void Awake()
+    private void Start()
     {
         Setup();
     }
@@ -51,14 +87,30 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
-            if (block) block = false;
-            else ChangeState(PlayerActionState.None);
+            if (block && EventSystem.current.IsPointerOverGameObject()) block = false;
+            else ChangeState(ActionState.None);
         }
     }
 
     void Setup()
     {
         deckHolder = GetComponent<DeckHolder>();
-        deckHolder.Setup(15);
+        var d = deckHolder.Setup();
+        d.OnCardDestroyed += CardDestroyed;
+        d.OnCardUpgraded += CardUpgraded;
+
+        ChangeCurrency(15);
+    }
+
+    void CardUpgraded(byte cost)
+    {
+        ChangeState(ActionState.None);
+        ChangeCurrency(cost * -1);
+    }
+
+    void CardDestroyed(byte amount)
+    {
+        ChangeState(ActionState.None);
+        ChangeCurrency(amount);
     }
 }

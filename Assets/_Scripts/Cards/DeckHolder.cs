@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,12 +7,10 @@ public class DeckHolder : MonoBehaviour
     [field: SerializeField] public CardHolder prefabCardHolder { get; private set; }
     [SerializeField] StartCard[] startCards;
 
-    public ushort currency { get; private set; }
     public Deck deck { get; private set; }
 
-    public void Setup(ushort currency)
+    public Deck Setup()
     {
-        this.currency = currency;
         Deck deck = new Deck();
         CardHolder cardHolder = null;
 
@@ -23,6 +20,8 @@ public class DeckHolder : MonoBehaviour
             cardHolder.Setup(startCards[i].GetCardInfo(), deck);
             deck.CardAdd(cardHolder);
         }
+
+        return deck;
     }
 
     public List<Card> GetStartCards()

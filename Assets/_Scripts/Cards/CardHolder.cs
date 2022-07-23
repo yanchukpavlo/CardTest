@@ -38,7 +38,7 @@ public abstract class CardHolder : Button4Action
     #region Abstract
 
     abstract public void ChangeVisual(CardStatus status);
-    abstract public void MouseInteract(PlayerActionState status);
+    abstract public void MouseInteract(ActionState status);
 
     #endregion
 
@@ -53,6 +53,8 @@ public abstract class CardHolder : Button4Action
 
     virtual public void Upgrade()
     {
+        if (IsUpgraded) return;
+        
         currentDeck.CardUpgrade(this);
         card.status = CardStatus.Upgraded;
         ChangeVisual(card.status);

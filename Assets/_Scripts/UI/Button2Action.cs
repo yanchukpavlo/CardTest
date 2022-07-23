@@ -13,4 +13,11 @@ public class Button2Action : Button
         base.OnPointerDown(eventData);
         m_OnDown?.Invoke();
     }
+
+    public override void OnDeselect(BaseEventData eventData)
+    {
+        InstantClearState();
+
+        base.OnDeselect(eventData);
+    }
 }

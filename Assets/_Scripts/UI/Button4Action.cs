@@ -12,6 +12,8 @@ public class Button4Action : Button2Action
 
     public override void OnPointerEnter(PointerEventData eventData)
     {
+        if (!IsInteractable()) return;
+
         base.OnPointerEnter(eventData);
         m_OnExit?.Invoke();
         EventSystem.current.SetSelectedGameObject(gameObject);
@@ -19,6 +21,8 @@ public class Button4Action : Button2Action
 
     public override void OnPointerExit(PointerEventData eventData)
     {
+        if (!IsInteractable()) return;
+
         base.OnPointerEnter(eventData);
         m_OnEnter?.Invoke();
     }
