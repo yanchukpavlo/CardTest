@@ -155,7 +155,7 @@ public class PlayerCardHolder : CardHolder
 
     void ChangeInteraction(ActionState newState)
     {
-        if (newState == ActionState.Update && Player.Currency < card.updatedCost)
+        if (newState == ActionState.Update && (IsUpgraded || Player.Currency < card.updatedCost))
         {
             canvasGroup.interactable = false;
         }
